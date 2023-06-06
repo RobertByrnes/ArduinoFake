@@ -1,0 +1,61 @@
+pipeline {
+    agent {
+            docker { 
+                image 'wyleung/python-builder:latest'
+                args '-u root:root'
+            }
+        }
+    stages {
+        stage('Before Install') {
+            steps { sh 'python --version && pip --version' }
+        }
+        stage('Install PlatformIO') {
+            steps {
+                sh 'pip install --user --upgrade pip'
+                sh 'pip install --user --upgrade platformio'
+            }
+        }
+        stage('Build') {
+            matrix {
+                axes {
+                    axis {
+                        name 'COMPILER'
+                        values 'g++-5', 'clang++-3.6'
+                    }
+                }
+
+                stages {
+                    stage('GCC Build') {
+                        when {
+                            expression {
+                                params.COMPILER == 'g++-5'
+                            }
+                        }
+                        steps {
+                            script {
+                                env.COMPILER = params.COMPILER
+                                env.MAKE_TASK = 'cmake-test'
+                            }
+                            sh 'make $MAKE_TASK'
+                        }
+                    }
+
+                    stage('Clang Build') {
+                        when {
+                            expression {
+                                params.COMPILER == 'clang++-3.6'
+                            }
+                        }
+                        steps {
+                            script {
+                                env.COMPILER = params.COMPILER
+                                env.MAKE_TASK = 'cmake-test'
+                            }
+                            sh 'make $MAKE_TASK'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -9,7 +9,14 @@ pipeline {
         stage('Before Install') {
             steps { 
                 sh 'python --version && pip --version'
-                sh 'g++ --version && clang++ --version'
+                sh 'g++ --version '
+            }
+        }
+        stage('Install Clang') {
+            steps { 
+                sh 'apt-get update'
+                sh 'apt-get install -y clang'
+                sh 'clang++ --version'
             }
         }
         stage('Install PlatformIO') {

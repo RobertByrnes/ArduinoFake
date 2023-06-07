@@ -23,7 +23,7 @@ pipeline {
                 axes {
                     axis {
                         name 'COMPILER'
-                        values 'g++-5', 'clang++-3.6'
+                        values 'g++-6.4.0', 'clang++-'
                     }
                 }
 
@@ -31,7 +31,7 @@ pipeline {
                     stage('GCC Build') {
                         when {
                             expression {
-                                params.COMPILER == 'g++-5'
+                                params.COMPILER == 'g++-6.4.0'
                             }
                         }
                         steps {

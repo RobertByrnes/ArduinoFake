@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Install Clang') {
             steps { 
-                sh 'apt-get update'
-                sh 'apt-get install -y clang'
+                sh 'apt update'
+                sh 'apt install -y clang'
                 sh 'clang++ --version'
             }
         }

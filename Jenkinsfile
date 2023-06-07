@@ -1,7 +1,7 @@
 pipeline {
     agent {
             docker { 
-                image 'platformio:latest'
+                image 'robertbyrnes1987/platformio-pipeline:latest'
                 args '-u root:root'
             }
         }

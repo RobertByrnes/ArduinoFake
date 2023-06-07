@@ -7,7 +7,10 @@ pipeline {
         }
     stages {
         stage('Before Install') {
-            steps { sh 'python --version && pip --version' }
+            steps { 
+                sh 'python --version && pip --version'
+                sh 'g++ --version && clang++ --version'
+            }
         }
         stage('Install PlatformIO') {
             steps {

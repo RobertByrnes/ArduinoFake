@@ -1,28 +1,17 @@
 pipeline {
     agent {
             docker { 
-                image 'wyleung/python-builder:latest'
+                image 'shaguarger/platformio:latest'
                 args '-u root:root'
             }
         }
     stages {
         stage('Before Install') {
             steps { 
-                sh 'python --version && pip --version'
-                sh 'g++ --version '
-            }
-        }
-        stage('Install Clang') {
-            steps { 
-                sh 'apt update'
-                sh 'apt install -y clang'
+                sh 'python --version'
+                sh 'pip --version'
+                sh 'g++ --version'
                 sh 'clang++ --version'
-            }
-        }
-        stage('Install PlatformIO') {
-            steps {
-                sh 'pip install --user --upgrade pip'
-                sh 'pip install --user --upgrade platformio'
             }
         }
         stage('Build') {

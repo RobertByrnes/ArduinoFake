@@ -6,6 +6,13 @@ pipeline {
             }
         }
     stages {
+        stage('Install Clang++') {
+            steps {
+                sh 'apt-get update'
+                sh 'apt-get install -y clang-3.6'
+                sh 'update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.6 100'
+            }
+        }
         stage('Before Install') {
             steps { 
                 sh 'python --version'

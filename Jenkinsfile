@@ -15,6 +15,7 @@ pipeline {
                 sh 'pip --version'
                 sh 'g++ --version'
                 sh 'clang++ --version'
+                sh 'git config --global --add safe.directory /var/jenkins_home/workspace/ArduinoFake'
             }
         }
         stage('Run CMake') {

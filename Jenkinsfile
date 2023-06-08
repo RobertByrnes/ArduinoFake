@@ -1,6 +1,6 @@
-pipeline {
+pipeline { 
     agent {
-            docker { 
+            docker.withRegistry('https://index.docker.io/v1/', 'b44e395a-46d5-4683-a237-91e11f269b6b') { 
                 image 'robertbyrnes1987/platformio-pipeline:latest'
                 args '-u root:root'
             }

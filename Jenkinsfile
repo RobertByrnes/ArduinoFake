@@ -33,5 +33,10 @@ pipeline {
                 sh 'make test'
             }
         }
+        stage('After Unit Tests') {
+            steps {
+                sh 'ls ./Testing/Temporary'
+            }
+        }
     }
 }

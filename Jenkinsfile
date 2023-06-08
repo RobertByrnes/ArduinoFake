@@ -32,16 +32,26 @@ pipeline {
             steps {
                 sh 'make test'
             }
-            success {
-                sh 'cat ./Testing/Temporary/LastTest.log'
-            }
-            failure {
-                sh 'cat ./Testing/Temporary/LastTestsFailed.log'
-            }
         }
         stage('After Unit Tests') {
-            steps {
-                sh 'cat ./Testing/Temporary/CTestCostData.txt'          }
+            // steps {
+            script {
+                if (fileExists(''./Testing/Temporary/LastTest.log')) {
+                    sh 'cat ./Testing/Temporary/LastTest.log'
+                }
+                }
+            // }
+        }
+    }
+    post { 
+        success { 
+            sh './Testing/Temporary/LastTest.log'
+        }
+        failure { 
+            sh './Testing/Temporary/LastTestFailures.log'
+        }
+        always { 
+            sh './Testing/Temporary/CTestCostData.txt'
         }
     }
 }

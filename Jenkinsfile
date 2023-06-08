@@ -32,11 +32,16 @@ pipeline {
             steps {
                 sh 'make test'
             }
+            success {
+                sh 'cat ./Testing/Temporary/LastTest.log'
+            }
+            failure {
+                sh 'cat ./Testing/Temporary/LastTestsFailed.log'
+            }
         }
         stage('After Unit Tests') {
             steps {
-                sh 'ls ./Testing/Temporary'
-            }
+                sh 'cat ./Testing/Temporary/CTestCostData.txt'          }
         }
     }
 }

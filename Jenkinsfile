@@ -3,7 +3,8 @@ pipeline {
             docker { 
                 image 'robertbyrnes1987/platformio-pipeline'
                 args '-u root:root'
-                registryCredentialsId 'b44e395a-46d5-4683-a237-91e11f269b6b	'
+                registryUrl 'https://registry.hub.docker.com/v2/'
+                registryCredentialsId 'b44e395a-46d5-4683-a237-91e11f269b6b'
             }
         }
     stages {

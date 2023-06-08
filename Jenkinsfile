@@ -36,13 +36,13 @@ pipeline {
     }
     post { 
         success { 
-            sh './Testing/Temporary/LastTest.log'
+            sh 'cat ./Testing/Temporary/LastTest.log'
         }
         failure { 
-            sh './Testing/Temporary/LastTestFailures.log'
+            sh 'cat ./Testing/Temporary/LastTestFailures.log'
         }
         always { 
-            sh './Testing/Temporary/CTestCostData.txt'
+            sh 'cat ./Testing/Temporary/CTestCostData.txt'
         }
     }
 }

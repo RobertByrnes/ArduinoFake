@@ -1,9 +1,10 @@
 pipeline { 
     agent {
             docker { 
-                image 'robertbyrnes1987/platformio-pipeline'
+                image 'robertbyrnes1978/platformio-pipeline'
                 args '-u root:root'
-                registryUrl 'https://registry.hub.docker.com/v2/'
+                // registryUrl 'https://registry.hub.docker.com/v2/'
+                registryUrl 'https://index.docker.io/v2/'
                 registryCredentialsId 'b44e395a-46d5-4683-a237-91e11f269b6b'
             }
         }

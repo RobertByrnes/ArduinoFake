@@ -33,15 +33,6 @@ pipeline {
                 sh 'make test'
             }
         }
-        stage('After Unit Tests') {
-            // steps {
-            script {
-                if (fileExists(''./Testing/Temporary/LastTest.log')) {
-                    sh 'cat ./Testing/Temporary/LastTest.log'
-                }
-                }
-            // }
-        }
     }
     post { 
         success { 

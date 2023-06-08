@@ -28,11 +28,11 @@ pipeline {
 
                 stages {
                     stage('GCC Build') {
-                        when {
-                            expression {
-                                params.COMPILER == 'g++-10.2.1'
-                            }
-                        }
+                        // when {
+                        //     expression {
+                        //         params.COMPILER == 'g++-10.2.1'
+                        //     }
+                        // }
                         steps {
                             script {
                                 env.COMPILER = params.COMPILER

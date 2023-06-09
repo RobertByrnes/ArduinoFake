@@ -51,7 +51,7 @@ pipeline {
             attachLog: true,
             compressLog: true,
             to: 'test@jenkins',
-            recipientProviders: [upstreamDevelopers(), requestor()]]  
+            recipientProviders: [upstreamDevelopers(), requestor()]
         }
         changed {
             emailtext subject: 'Job \'${JOB_NAME}\' (${BUILD_NUMBER}) has changed status',
@@ -59,7 +59,7 @@ pipeline {
                 attachLog: true,
                 compressLog: true,
                 to: 'test@jenkins',
-                recipientProviders: [upstreamDevelopers(), requestor()]]  
+                recipientProviders: [upstreamDevelopers(), requestor()]
         }
     }
 }

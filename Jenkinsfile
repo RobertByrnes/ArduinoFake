@@ -8,6 +8,9 @@ pipeline {
                 // registryCredentialsId 'b44e395a-46d5-4683-a237-91e11f269b6b'
             }
         }
+    triggers {
+        pollSCM('H/5 * * * *')
+    }
     stages {
         stage('Before Install') {
             steps { 

@@ -46,15 +46,9 @@ pipeline {
         }
         always { 
             sh 'cat ./Testing/Temporary/CTestCostData.txt'
-            emailtext subject: 'Job \'${JOB_NAME}\' (${BUILD_NUMBER}) has changed status',
-            body: 'Please go to ${BUILD_URL} and verify the build',
-            attachLog: true,
-            compressLog: true,
-            to: 'test@jenkins',
-            recipientProviders: [upstreamDevelopers(), requestor()]
         }
         changed {
-            emailtext subject: 'Job \'${JOB_NAME}\' (${BUILD_NUMBER}) has changed status',
+            emailext subject: 'Job \'${JOB_NAME}\' (${BUILD_NUMBER}) has changed status',
                 body: 'Please go to ${BUILD_URL} and verify the build',
                 attachLog: true,
                 compressLog: true,
